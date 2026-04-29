@@ -1,0 +1,174 @@
+.services {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.services h2 {
+  margin-bottom: 50px;
+}
+
+/* Timeline main */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Center line */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background: #dcdcdc;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Progress line */
+.timeline-progress {
+  position: absolute;
+  width: 4px;
+  background: linear-gradient(to bottom, #6ea8fe, #0B5ED7);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 0;
+  transition: height 0.1s linear;
+  z-index: 2;
+}
+
+/* Containers */
+.container {
+  padding: 20px 40px;
+  position: relative;
+  width: 50%;
+}
+
+/* Left side */
+.container.left {
+  left: 0;
+}
+
+/* Right side */
+.container.right {
+  left: 50%;
+}
+
+/* ❌ REMOVE OLD DOT SYSTEM */
+/* .container::after { ... } */
+
+/* ✅ NEW PERFECT CENTER DOT */
+.dot {
+  position: absolute;
+  top: 30px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 3px solid #6ea8fe;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.dot-fill {
+  width: 100%;
+  height: 0%;
+  background: #0B5ED7;
+  transition: height 0.2s linear;
+}
+
+/* Content box */
+.content {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: left;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.4s;
+}
+
+.content.active {
+  background: #eef4ff;
+  border: 1px solid #0B5ED7;
+
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(11, 94, 215, 0.2);
+}
+
+.content:hover {
+  transform: translateY(-5px);
+}
+
+/* Text */
+.content h3 {
+  color: #1f3c88;
+  margin-bottom: 10px;
+}
+
+.content p {
+  color: #555;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 20px;
+  }
+
+  .timeline-progress {
+    left: 20px;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 20px;
+  }
+
+  .container.right {
+    left: 0;
+  }
+
+  /* Move dot to left for mobile */
+  .dot {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+}
+
+/* LEFT SIDE */
+.container.left .dot {
+  left: 100%;   /* right edge → center line */
+}
+
+/* RIGHT SIDE */
+.container.right .dot {
+  left: 0%;     /* left edge → center line */
+}
+.dot.active {
+  background: #0B5ED7;
+  box-shadow: 0 0 10px rgba(11, 94, 215, 0.6);
+}
+
+@media (max-width: 768px) {
+
+  .work-timeline::after {
+    left: 20px;
+  }
+
+  .work-item {
+    width: 100%;
+    padding-left: 60px;
+  }
+
+  .work-item.left,
+  .work-item.right {
+    left: 0;
+    text-align: left;
+  }
+
+}
