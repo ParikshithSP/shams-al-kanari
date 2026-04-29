@@ -6,9 +6,12 @@ function Navbar() {
   const [active, setActive] = useState("home");
 
   const scrollTo = (id) => {
-    document.getElementById(id).scrollIntoView({
-      behavior: "smooth",
-    });
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
@@ -23,7 +26,7 @@ function Navbar() {
 
         const rect = el.getBoundingClientRect();
 
-        // 🔥 CORE FIX (center detection)
+        // 🔥 CENTER DETECTION (best for accuracy)
         if (
           rect.top <= window.innerHeight / 2 &&
           rect.bottom >= window.innerHeight / 2
@@ -37,7 +40,7 @@ function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    // 🔥 RUN ON LOAD ALSO
+    // run once on load
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -55,6 +58,7 @@ function Navbar() {
 
         {/* Nav Links */}
         <div className="nav-links">
+
           <span
             className={active === "home" ? "active" : ""}
             onClick={() => scrollTo("home")}
@@ -82,8 +86,8 @@ function Navbar() {
           >
             Contact
           </span>
-        </div>
 
+        </div>
       </div>
     </div>
   );
