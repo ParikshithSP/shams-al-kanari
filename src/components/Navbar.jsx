@@ -6,17 +6,22 @@ function Navbar() {
   const [active, setActive] = useState("home");
 
   const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const yOffset = -100; // adjust based on navbar height
+    const y =
+      element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+
+    // 🔥 Force active immediately (important)
+    setActive(id);
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "services", "rating", "contact"];
+      const sections = ["home", "services", "rate-us", "contact"];
 
       let currentSection = "home";
 
@@ -28,8 +33,8 @@ function Navbar() {
 
         // 🔥 CENTER DETECTION (best for accuracy)
         if (
-          rect.top <= window.innerHeight / 2 &&
-          rect.bottom >= window.innerHeight / 2
+          rect.top <= 150 &&
+          rect.bottom >= 150
         ) {
           currentSection = id;
         }
@@ -74,8 +79,8 @@ function Navbar() {
           </span>
 
           <span
-            className={active === "rating" ? "active" : ""}
-            onClick={() => scrollTo("rating")}
+            className={active === "rate-us" ? "active" : ""}
+            onClick={() => scrollTo("rate-us")}
           >
             Rate Us
           </span>
