@@ -5,20 +5,22 @@ import logo from "../assets/logo.jpeg";
 function Navbar() {
   const [active, setActive] = useState("home");
 
+  // ✅ Smooth scroll with offset fix
   const scrollTo = (id) => {
     const element = document.getElementById(id);
     if (!element) return;
 
-    const yOffset = -100; // adjust based on navbar height
+    const yOffset = -120; // navbar height fix
     const y =
       element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
     window.scrollTo({ top: y, behavior: "smooth" });
 
-    // 🔥 Force active immediately (important)
+    // ✅ instantly highlight clicked tab
     setActive(id);
   };
 
+  // ✅ Scroll detection FIXED (stable method)
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "services", "rate-us", "contact"];
@@ -26,15 +28,15 @@ function Navbar() {
       let currentSection = "home";
 
       sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (!el) return;
+        const section = document.getElementById(id);
+        if (!section) return;
 
-        const rect = el.getBoundingClientRect();
+        const sectionTop = section.offsetTop - 140; // adjust for navbar
+        const sectionHeight = section.offsetHeight;
 
-        // 🔥 CENTER DETECTION (best for accuracy)
         if (
-          rect.top <= 150 &&
-          rect.bottom >= 150
+          window.scrollY >= sectionTop &&
+          window.scrollY < sectionTop + sectionHeight
         ) {
           currentSection = id;
         }
