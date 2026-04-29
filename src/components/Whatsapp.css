@@ -25,3 +25,9 @@
 .whatsapp:hover {
   transform: scale(1.1);
 }
+
+.whatsapp-btn {
+  bottom: 20px;
+  right: 15px;
+  z-index: 999;
+}

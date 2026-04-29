@@ -87,16 +87,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .nav-links span {
-    font-size: 14px;
+    font-size: 12px;
     padding: 6px 12px;
+    white-space: nowrap;
   }
 
-}
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
 
-.nav-links span {
-  white-space: nowrap;
 }

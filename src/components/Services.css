@@ -157,12 +157,13 @@
 @media (max-width: 768px) {
 
   .work-timeline::after {
-    left: 20px;
+    left: 15px;
   }
 
   .work-item {
     width: 100%;
-    padding-left: 60px;
+    padding-left: 50px;
+    margin-bottom: 20px;
   }
 
   .work-item.left,
@@ -171,4 +172,12 @@
     text-align: left;
   }
 
+  .work-item .content {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .work-item::before {
+    left: 5px;
+  }
 }

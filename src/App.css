@@ -182,3 +182,7 @@
     border-right-color: var(--border);
   }
 }
+
+body {
+  padding-top: 80px;
+}

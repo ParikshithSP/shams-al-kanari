@@ -449,3 +449,25 @@
   }
 
 }
+
+/* ===== CLIENTS MOBILE FIX ===== */
+.clients-modal {
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.clients-table {
+  width: 100%;
+  font-size: 14px;
+}
+
+.clients-table td,
+.clients-table th {
+  padding: 8px;
+  word-break: break-word;
+}
